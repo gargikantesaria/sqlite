@@ -7,8 +7,34 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <ion-item style="margin: 10px 10px 20px 10px; border: 1px solid gray !important;">
+      <ion-label>Enter name:</ion-label>
+      <ion-input type="text" style="width: 100%;" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item style="margin: 10px 10px 20px 10px; border: 1px solid gray !important;">
+      <ion-label>Enter age:</ion-label>
+      <ion-input type="text" style="width: 100%;" [(ngModel)]="age"></ion-input>
+    </ion-item> 
+    <button ion-button (click)="callInsertMethod(name,age)">
+      Insert
+     </button>
+     <button ion-button (click)="callUpdateMethod(name,age)">
+      Update
+     </button>
+     <button ion-button (click)="callDeleteMethod(name,age)">
+      Delete
+     </button>
+     <button ion-button (click)="deleteAllMethod()">
+      Delete All
+     </button>
+  </ion-list>
+  <ion-list *ngIf="shoButtonClick">
+    <ion-item *ngFor="let data of dataArray">
+      <ion-row>
+        <ion-col>{{ data.name }}</ion-col>
+        <ion-col>{{ data.age }}</ion-col>
+      </ion-row>
+     </ion-item>
+  </ion-list>
 </ion-content>
